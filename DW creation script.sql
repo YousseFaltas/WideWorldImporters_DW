@@ -105,6 +105,18 @@ CREATE TABLE DimDate (
 );
 GO
 
+CREATE TABLE WarehouseTransactionDim (
+    WarehouseTransactionDimID INT PRIMARY KEY IDENTITY(1,1),  -- Surrogate key for the dimension
+    StockItemTransactionID INT NOT NULL,  -- Unique transaction ID
+    StockItemID INT NOT NULL,  -- The stock item being moved
+    TransactionTypeID INT NOT NULL,  -- Type of transaction (purchase, sale, return, etc.)
+    TransactionOccurredWhen DATETIME2(7) NOT NULL,  -- Date and time of transaction
+    Quantity DECIMAL(18, 3) NOT NULL,  -- Quantity of stock movement (positive for incoming, negative for outgoing)
+    CustomerID INT NULL,  -- Nullable: if applicable, customer ID for sales or returns
+    SupplierID INT NULL  -- Nullable: if applicable, supplier ID for purchases or replenishments
+);
+GO
+
 -- Fact Table: Inventory Transactions
 CREATE TABLE FactInventoryMovement (
     --The Row Key
@@ -134,12 +146,14 @@ CREATE TABLE FactInventoryMovement (
     PurchasingOrderKey INT,
     CustomerKey INT,
     SupplierKey INT,
+	WarehouseTransactionDimID INT,
 	FOREIGN KEY (StockItemKey) REFERENCES DimStockItem(StockItemKey),
     FOREIGN KEY (SellingOrderKey) REFERENCES DimSellingOrder(SellingOrderKey),
     FOREIGN KEY (PurchasingOrderKey) REFERENCES DimPurchasingOrder(PurchasingOrderDimID),
     FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey),
     FOREIGN KEY (SupplierKey) REFERENCES DimSupplier(SupplierKey),
-	
+	FOREIGN KEY (WarehouseTransactionDimID) REFERENCES WarehouseTransactionDim(WarehouseTransactionDimID),
+
 	--The created measures useful in tracking the items
     QuantityOrdered INT,
     QuantityReceived INT,
