@@ -23,14 +23,14 @@ CREATE TABLE DimSupplier (
     SupplierKey INT PRIMARY KEY,-- Surrogate Key
     WWISupplierID INT UNIQUE,-- Business Key
     SupplierName VARCHAR(100),
-    SupplierCategoryID INT,
+    SupplierCategory  NVARCHAR(50),
     PhoneNumber NVARCHAR(20),
 	WebsiteURL NVARCHAR(256),
     SupplierReference VARCHAR(20),
     PaymentDays INT,
-    DeliveryMethodID INT,
-	DeliveryCityID INT,
-    PostalCityID INT
+	DeliveryMethod NVARCHAR(100),  -- Standard delivery method
+    DeliveryCity NVARCHAR(100),  -- City name instead of ID
+    PostalCity NVARCHAR(100)
 );
 GO
 
@@ -41,8 +41,8 @@ CREATE TABLE DimStockItem (
     Brand NVARCHAR(50),
     Size NVARCHAR(20),
     Barcode NVARCHAR(50),
-    UnitPackageID NVARCHAR(50),
-    OuterPackageID NVARCHAR(50),
+    UnitPackage NVARCHAR(50),
+    OuterPackage NVARCHAR(50),
     IsChillerStock BIT,
     Color NVARCHAR(20) NULL,
     SupplierID INT NULL,
