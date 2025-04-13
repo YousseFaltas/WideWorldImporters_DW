@@ -118,47 +118,66 @@ GO
 
 -- Fact Table: Inventory Transactions
 CREATE TABLE FactInventoryMovement (
-    --The Row Key
-	FactID INT PRIMARY KEY IDENTITY(1,1),
-
-	--The Foreign keys of the role playing date dimension
-	POrderDateKey INT, 
-	POrderExpectedDelDateKey INT, 
+    -- Foreign keys to the role-playing date dimension
+    POrderDateKey INT, 
+    POrderExpectedDelDateKey INT, 
     ItemLReceiptDateKey INT, 
     StockReceiptDateKey INT,  
     SOrderDateKey INT, 
     SOrderExpectedDelDateKey INT,
-	StockIssueDateKey INT,
+    StockIssueDateKey INT,
     ItemSoldDelDateKey INT,
-	FOREIGN KEY (POrderDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (POrderExpectedDelDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (ItemLReceiptDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (StockReceiptDateKey ) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (SOrderDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (SOrderExpectedDelDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (StockIssueDateKey) REFERENCES DimDate(DateKey),
-    FOREIGN KEY (ItemSoldDelDateKey) REFERENCES DimDate(DateKey),
 
-	--Foreign keys for the rest of the dimesnions
-	StockItemKey INT NOT NULL,
+    -- Foreign keys to dimension tables
+    StockItemKey INT NOT NULL,
     SellingOrderKey INT,
     PurchasingOrderKey INT,
     CustomerKey INT,
     SupplierKey INT,
-	WarehouseTransactionDimID INT,
-	FOREIGN KEY (StockItemKey) REFERENCES DimStockItem(StockItemKey),
-    FOREIGN KEY (SellingOrderKey) REFERENCES DimSellingOrderLine(SellingOrderKey),
-    FOREIGN KEY (PurchasingOrderKey) REFERENCES DimPurchasingOrderLine(PurchasingOrderDimID),
-    FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey),
-    FOREIGN KEY (SupplierKey) REFERENCES DimSupplier(SupplierKey),
-	FOREIGN KEY (WarehouseTransactionDimID) REFERENCES WarehouseTransactionDim(WarehouseTransactionDimID),
+    WarehouseTransactionDimID INT,
 
-	--The created measures useful in tracking the items
+    -- Measures
     QuantityOrdered INT,
     QuantityReceived INT,
     QuantityStored INT,
     QuantityDispatched INT,
     DaysInWarehouse INT,
     LeadTimeDays INT,
+
+    -- Composite Primary Key
+    PRIMARY KEY (
+        POrderDateKey,
+        POrderExpectedDelDateKey,
+        ItemLReceiptDateKey,
+        StockReceiptDateKey,
+        SOrderDateKey,
+        SOrderExpectedDelDateKey,
+        StockIssueDateKey,
+        ItemSoldDelDateKey,
+        StockItemKey,
+        SellingOrderKey,
+        PurchasingOrderKey,
+        CustomerKey,
+        SupplierKey,
+        WarehouseTransactionDimID
+    ),
+
+    -- Foreign key constraints
+    FOREIGN KEY (POrderDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (POrderExpectedDelDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (ItemLReceiptDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (StockReceiptDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (SOrderDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (SOrderExpectedDelDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (StockIssueDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (ItemSoldDelDateKey) REFERENCES DimDate(DateKey),
+    FOREIGN KEY (StockItemKey) REFERENCES DimStockItem(StockItemKey),
+    FOREIGN KEY (SellingOrderKey) REFERENCES DimSellingOrderLine(SellingOrderKey),
+    FOREIGN KEY (PurchasingOrderKey) REFERENCES DimPurchasingOrderLine(PurchasingOrderDimID),
+    FOREIGN KEY (CustomerKey) REFERENCES DimCustomer(CustomerKey),
+    FOREIGN KEY (SupplierKey) REFERENCES DimSupplier(SupplierKey),
+    FOREIGN KEY (WarehouseTransactionDimID) REFERENCES WarehouseTransactionDim(WarehouseTransactionDimID)
 );
+GO
+
 GO
