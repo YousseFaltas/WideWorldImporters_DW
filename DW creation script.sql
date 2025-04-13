@@ -27,7 +27,7 @@ CREATE TABLE DimSupplier (
     SupplierCategoryName  NVARCHAR(50),
     PhoneNumber NVARCHAR(20),
 	WebsiteURL NVARCHAR(256),
-    SupplierReference VARCHAR(20),
+    SupplierReference NVARCHAR(20),
     PaymentDays INT,
 	DeliveryMethodName NVARCHAR(50),  -- Standard delivery method
     CityName NVARCHAR(50),  -- City name instead of ID
