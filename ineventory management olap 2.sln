@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35826.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "ineventory management olap 2", "ineventory management olap 2\ineventory management olap 2.dtproj", "{9A581319-CF5B-4C30-87E5-05D28F35B809}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A581319-CF5B-4C30-87E5-05D28F35B809}.Development|Default.ActiveCfg = Development
+		{9A581319-CF5B-4C30-87E5-05D28F35B809}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41CC0ED3-64CF-48CD-A255-A0592E9273FF}
+	EndGlobalSection
+EndGlobal
