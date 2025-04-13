@@ -23,7 +23,7 @@ GO
 CREATE TABLE DimSupplier (
     SupplierKey INT PRIMARY KEY,-- Surrogate Key
     WWISupplierID INT UNIQUE,-- Business Key
-    SupplierName VARCHAR(100),
+    SupplierName NVARCHAR(100),
     SupplierCategoryName  NVARCHAR(50),
     PhoneNumber NVARCHAR(20),
 	WebsiteURL NVARCHAR(256),
