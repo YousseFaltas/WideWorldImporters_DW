@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{8A571C08-FEAB-43EB-AC99-EE30C20EF173}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{84FD03A8-F3C8-4AC1-A3AB-CDBAB1689233}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -567,6 +567,1910 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
               startId="Package\customer dimension\OLE DB Source Cust_query.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Date Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8071607B-38B4-42F3-9C76-7C0082EFD017}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Date Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Date Dimension\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input].Columns[DayNumber]"
+                      cachedDataType="i4"
+                      cachedName="DayNumber"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DayNumber]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input].Columns[CalendarMonthNumber]"
+                      cachedDataType="i4"
+                      cachedName="CalendarMonthNumber"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarMonthNumber]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input].Columns[CalendarYearNumber]"
+                      cachedDataType="i4"
+                      cachedName="CalendarYearNumber"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarYearNumber]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DayNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DayNumber]"
+                      name="Copy of DayNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DayNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarMonthNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarMonthNumber]"
+                      name="Copy of CalendarMonthNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarMonthNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarYearNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarYearNumber]"
+                      name="Copy of CalendarYearNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarYearNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      name="Copy of Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\date conversion SIID"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="date conversion SIID"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\date conversion SIID.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\date conversion SIID.Inputs[Data Conversion Input].Columns[StockIssueDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="StockIssueDate"
+                      cachedScale="7"
+                      lineageId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].Columns[StockIssueDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Date Dimension\date conversion SIID.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Output].Columns[convertedStockIssueDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Output].Columns[convertedStockIssueDate]"
+                      name="convertedStockIssueDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].Columns[StockIssueDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Date Dimension\date conversion SIID.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Date Conversion SIRD"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Date Conversion SIRD"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Date Conversion SIRD.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Date Conversion SIRD.Inputs[Data Conversion Input].Columns[StockReceiptDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="StockReceiptDate"
+                      lineageId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].Columns[StockReceiptDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Date Dimension\Date Conversion SIRD.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Output].Columns[convertedStockReceiptDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Output].Columns[convertedStockReceiptDate]"
+                      name="convertedStockReceiptDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].Columns[StockReceiptDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Date Dimension\Date Conversion SIRD.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Date conversion SOLCD"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Date conversion SOLCD"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Date conversion SOLCD.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Date conversion SOLCD.Inputs[Data Conversion Input].Columns[SalesOrderLineCompletionDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="SalesOrderLineCompletionDate"
+                      cachedScale="7"
+                      lineageId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].Columns[SalesOrderLineCompletionDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Date Dimension\Date conversion SOLCD.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Output].Columns[convertedSalesOrderLineCompletionDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Output].Columns[convertedSalesOrderLineCompletionDate]"
+                      name="convertedSalesOrderLineCompletionDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].Columns[SalesOrderLineCompletionDate]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Date Dimension\Date conversion SOLCD.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\date Dimension"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="date Dimension"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\date Dimension.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].Columns[Copy of CalendarMonthNumber]"
+                      cachedDataType="i4"
+                      cachedName="Copy of CalendarMonthNumber"
+                      externalMetadataColumnId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonthNumber]"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarMonthNumber]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].Columns[Copy of CalendarYearNumber]"
+                      cachedDataType="i4"
+                      cachedName="Copy of CalendarYearNumber"
+                      externalMetadataColumnId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CalendarYearNumber]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].Columns[Copy of Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[DateValue]"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]" />
+                    <inputColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].Columns[Copy of DayNumber]"
+                      cachedDataType="i4"
+                      cachedName="Copy of DayNumber"
+                      externalMetadataColumnId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[DayNumber]"
+                      lineageId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DayNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[DateValue]"
+                      dataType="dbDate"
+                      name="DateValue" />
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[DayNumber]"
+                      dataType="i4"
+                      name="DayNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonthNumber]"
+                      dataType="i4"
+                      name="CalendarMonthNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      dataType="i4"
+                      name="CalendarYear" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\date Dimension.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\date Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\date Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\date Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\date Dimension.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Derived Column.Inputs[Derived Column Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Date Dimension\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DayNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DayNumber]"
+                      name="DayNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarMonthNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarMonthNumber]"
+                      name="CalendarMonthNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarYearNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[CalendarYearNumber]"
+                      name="CalendarYearNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]}) * 10000 + [MONTH](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]}) * 100 + [DAY](#{Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(Date) * 10000 + MONTH(Date) * 100 + DAY(Date)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Date Dimension\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\LastReceipt Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="LastReceipt Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Warehouse].[StockItemTransactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT(LastReceiptDate) FROM Purchasing.PurchaseOrderLines</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\LastReceipt Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output].Columns[LastReceiptDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptDate]"
+                      lineageId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output].Columns[LastReceiptDate]"
+                      name="LastReceiptDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptDate]"
+                      dataType="dbDate"
+                      name="LastReceiptDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[LastReceiptDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[LastReceiptDate]"
+                      name="LastReceiptDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\purchasingDate"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="purchasingDate"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Purchasing].[PurchaseOrders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT(OrderDate) as PurchasigOrderDate FROM Purchasing.PurchaseOrders</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\purchasingDate.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output].Columns[PurchasigOrderDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output].ExternalColumns[PurchasigOrderDate]"
+                      lineageId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output].Columns[PurchasigOrderDate]"
+                      name="PurchasigOrderDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output].ExternalColumns[PurchasigOrderDate]"
+                      dataType="dbDate"
+                      name="PurchasigOrderDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[PurchasigOrderDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[PurchasigOrderDate]"
+                      name="PurchasigOrderDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\PurchasingExpected Delivery Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PurchasingExpected Delivery Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Purchasing].[PurchaseOrderLines]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT(ExpectedDeliveryDate) as PurchasingexpectedDeliveryDate FROM Purchasing.PurchaseOrders</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\PurchasingExpected Delivery Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output].Columns[PurchasingexpectedDeliveryDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output].ExternalColumns[PurchasingexpectedDeliveryDate]"
+                      lineageId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output].Columns[PurchasingexpectedDeliveryDate]"
+                      name="PurchasingexpectedDeliveryDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output].ExternalColumns[PurchasingexpectedDeliveryDate]"
+                      dataType="dbDate"
+                      name="PurchasingexpectedDeliveryDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[PurchasingexpectedDeliveryDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[PurchasingexpectedDeliveryDate]"
+                      name="PurchasingexpectedDeliveryDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Sales OrderLine Completed Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Sales OrderLine Completed Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT (PickingCompletedWhen ) as SalesOrderLineCompletionDate FROM Sales.OrderLines</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\Sales OrderLine Completed Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].Columns[SalesOrderLineCompletionDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderLineCompletionDate]"
+                      lineageId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].Columns[SalesOrderLineCompletionDate]"
+                      name="SalesOrderLineCompletionDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderLineCompletionDate]"
+                      dataType="dbTimeStamp2"
+                      name="SalesOrderLineCompletionDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[SalesOrderLineCompletionDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[SalesOrderLineCompletionDate]"
+                      name="SalesOrderLineCompletionDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Sales Orders Expected Delivery Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Sales Orders Expected Delivery Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT (ExpectedDeliveryDate) as SalesExpectedDeliveryDate FROM Sales.Orders</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output].Columns[SalesExpectedDeliveryDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output].ExternalColumns[SalesExpectedDeliveryDate]"
+                      lineageId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output].Columns[SalesExpectedDeliveryDate]"
+                      name="SalesExpectedDeliveryDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output].ExternalColumns[SalesExpectedDeliveryDate]"
+                      dataType="dbDate"
+                      name="SalesExpectedDeliveryDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[SalesExpectedDeliveryDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[SalesExpectedDeliveryDate]"
+                      name="SalesExpectedDeliveryDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\SalesOrders Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SalesOrders Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Sales].[OrderLines]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT OrderDate as SalesOrderDate FROM Sales.Orders</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\SalesOrders Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output].Columns[SalesOrderDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderDate]"
+                      lineageId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output].Columns[SalesOrderDate]"
+                      name="SalesOrderDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderDate]"
+                      dataType="dbDate"
+                      name="SalesOrderDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[SalesOrderDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[SalesOrderDate]"
+                      name="SalesOrderDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Sort.Inputs[Sort Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      lineageId="Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\Sort.Outputs[Sort Output].Columns[Date]"
+                      name="Date"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Stock Item Issue Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stock Item Issue Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT TransactionOccurredWhen as StockIssueDate FROM Warehouse.StockItemTransactions WHERE TransactionTypeID =10</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\Stock Item Issue Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].Columns[StockIssueDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].ExternalColumns[StockIssueDate]"
+                      lineageId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].Columns[StockIssueDate]"
+                      name="StockIssueDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output].ExternalColumns[StockIssueDate]"
+                      dataType="dbTimeStamp2"
+                      name="StockIssueDate"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[StockIssueDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[StockIssueDate]"
+                      name="StockIssueDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\StockItem Receipt Date"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="StockItem Receipt Date"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Sales].[Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT (convert(date,TransactionOccurredWhen))  as StockReceiptDate FROM Warehouse.StockItemTransactions WHERE TransactionTypeID = 11</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date Dimension\StockItem Receipt Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Source DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].Columns[StockReceiptDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].ExternalColumns[StockReceiptDate]"
+                      lineageId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].Columns[StockReceiptDate]"
+                      name="StockReceiptDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output].ExternalColumns[StockReceiptDate]"
+                      dataType="dbDate"
+                      name="StockReceiptDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[StockReceiptDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[StockReceiptDate]"
+                      name="StockReceiptDate" />
+                    <outputColumn
+                      refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date Dimension\Union for Date DataType columns"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union for Date DataType columns"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 1].Columns[PurchasingexpectedDeliveryDate]"
+                      cachedDataType="dbDate"
+                      cachedName="PurchasingexpectedDeliveryDate"
+                      lineageId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output].Columns[PurchasingexpectedDeliveryDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 2].Columns[PurchasigOrderDate]"
+                      cachedDataType="dbDate"
+                      cachedName="PurchasigOrderDate"
+                      lineageId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output].Columns[PurchasigOrderDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 3].Columns[SalesOrderDate]"
+                      cachedDataType="dbDate"
+                      cachedName="SalesOrderDate"
+                      lineageId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output].Columns[SalesOrderDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 4]"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 4].Columns[SalesExpectedDeliveryDate]"
+                      cachedDataType="dbDate"
+                      cachedName="SalesExpectedDeliveryDate"
+                      lineageId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output].Columns[SalesExpectedDeliveryDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 5]"
+                  hasSideEffects="true"
+                  name="Union All Input 5">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 5].Columns[LastReceiptDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LastReceiptDate"
+                      lineageId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output].Columns[LastReceiptDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 6]"
+                  hasSideEffects="true"
+                  name="Union All Input 6">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 6].Columns[convertedSalesOrderLineCompletionDate]"
+                      cachedDataType="dbDate"
+                      cachedName="convertedSalesOrderLineCompletionDate"
+                      lineageId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Output].Columns[convertedSalesOrderLineCompletionDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 7]"
+                  hasSideEffects="true"
+                  name="Union All Input 7">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 7].Columns[convertedStockIssueDate]"
+                      cachedDataType="dbDate"
+                      cachedName="convertedStockIssueDate"
+                      lineageId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Output].Columns[convertedStockIssueDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 8]"
+                  hasSideEffects="true"
+                  name="Union All Input 8">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 8].Columns[convertedStockReceiptDate]"
+                      cachedDataType="dbDate"
+                      cachedName="convertedStockReceiptDate"
+                      lineageId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Output].Columns[convertedStockReceiptDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 9]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 9">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1].Columns[Date]"
+                      name="Date" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Date Dimension.Paths[Data Conversion Output]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 6]"
+              name="Data Conversion Output"
+              startId="Package\Date Dimension\Date conversion SOLCD.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Data Conversion Output1]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 7]"
+              name="Data Conversion Output"
+              startId="Package\Date Dimension\date conversion SIID.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Data Conversion Output2]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 8]"
+              name="Data Conversion Output"
+              startId="Package\Date Dimension\Date Conversion SIRD.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Data Conversion Output3]"
+              endId="Package\Date Dimension\date Dimension.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Date Dimension\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Derived Column Output]"
+              endId="Package\Date Dimension\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Date Dimension\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\PurchasingExpected Delivery Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output1]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 2]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\purchasingDate.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output2]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 3]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\SalesOrders Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output3]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 4]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\Sales Orders Expected Delivery Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output4]"
+              endId="Package\Date Dimension\Union for Date DataType columns.Inputs[Union All Input 5]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\LastReceipt Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output5]"
+              endId="Package\Date Dimension\Date conversion SOLCD.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\Sales OrderLine Completed Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output6]"
+              endId="Package\Date Dimension\date conversion SIID.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\Stock Item Issue Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[OLE DB Source Output7]"
+              endId="Package\Date Dimension\Date Conversion SIRD.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Date Dimension\StockItem Receipt Date.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Sort Output]"
+              endId="Package\Date Dimension\Derived Column.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Date Dimension\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Date Dimension.Paths[Union All Output 1]"
+              endId="Package\Date Dimension\Sort.Inputs[Sort Input]"
+              name="Union All Output 1"
+              startId="Package\Date Dimension\Union for Date DataType columns.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{380349EF-187C-4813-980F-00A9D40440EE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F61DD1C-20CF-4802-BA07-1AEA07379ED0}"
+          SQLTask:SqlStatementSource="DELETE FROM DimDate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2933,7 +4837,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate customer Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2967,7 +4871,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Sell_Orders Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2984,7 +4888,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Stock_Item Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3001,7 +4905,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Supplier Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3018,7 +4922,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Warehouse_Transaction dim"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="6">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3523,6 +5427,14 @@ JOIN
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Purchasing_orders dimension" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{E23AE3B6-8356-423B-9E9C-EEF95072B9E3}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Date Dimension" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3537,154 +5449,64 @@ JOIN
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="217.333333333334,42.6666666666667"
-          Id="Package\Purchasing_orders dimension"
-          TopLeft="426.596605583631,377.846025962167" />
-        <NodeLayout
           Size="174.666666666667,42.6666666666667"
           Id="Package\customer dimension"
-          TopLeft="1015.2737982282,207.44285343349" />
+          TopLeft="93.676589805071,366.692850585878" />
         <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\suppliers dimension"
-          TopLeft="811.249987911433,206.978567727506" />
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Date Dimension"
+          TopLeft="133.124998016283,545.116661866407" />
         <NodeLayout
-          Size="188,42.6666666666667"
-          Id="Package\Stock_items dimension"
-          TopLeft="54.6428563286153,207.564281823933" />
+          Size="164,42.6666666666667"
+          Id="Package\Execute SQL Task"
+          TopLeft="122.499998217183,454.499994171943" />
+        <NodeLayout
+          Size="217.333333333334,42.6666666666667"
+          Id="Package\Purchasing_orders dimension"
+          TopLeft="872.325767644908,524.865470420172" />
         <NodeLayout
           Size="198.666666666667,42.6666666666667"
           Id="Package\Selling_Orders dimension"
-          TopLeft="290.309519940544,208.557139127851" />
+          TopLeft="594.962293791245,208.557139127851" />
         <NodeLayout
-          Size="249.333333333334,42.6666666666667"
-          Id="Package\Warehouse_Transactions dimension"
-          TopLeft="516.071422520493,207.561902397474" />
+          Size="188,42.6666666666667"
+          Id="Package\Stock_items dimension"
+          TopLeft="359.295630179316,207.564281823933" />
         <NodeLayout
-          Size="258.666666666667,42.6666666666667"
-          Id="Package\Truncate Warehouse_Transaction dim"
-          TopLeft="520.486103355264,139.388886396421" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="649.819436688597,182.055553063088">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9.08134750143745,25.5063493343856"
-              Start="0,0"
-              End="-9.08134750143745,18.0063493343856">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8.75317466719281" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.75317466719281"
-                    Point2="0,12.7531746671928"
-                    Point3="-4,12.7531746671928" />
-                  <mssgle:LineSegment
-                    End="-5.08134750143745,12.7531746671928" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.08134750143745,12.7531746671928"
-                    Point2="-9.08134750143745,12.7531746671928"
-                    Point3="-9.08134750143745,16.7531746671928" />
-                  <mssgle:LineSegment
-                    End="-9.08134750143745,18.0063493343856" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="214.666666666667,42.6666666666667"
-          Id="Package\Truncate Supplier Dimension"
-          TopLeft="827.245362635219,132.333331602812" />
+          Size="172,42.6666666666667"
+          Id="Package\suppliers dimension"
+          TopLeft="1066.94442915834,337.895232708852" />
         <NodeLayout
           Size="220,42.6666666666667"
           Id="Package\Truncate customer Dimension"
-          TopLeft="1058.85977632144,136.334920469986" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1168.85977632144,179.001587136653">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-66.2526447599106,28.4412662968369"
-              Start="0,0"
-              End="-66.2526447599106,20.9412662968369">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.2206331484184" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.2206331484184"
-                    Point2="0,14.2206331484184"
-                    Point3="-4,14.2206331484184" />
-                  <mssgle:LineSegment
-                    End="-62.2526447599106,14.2206331484184" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-62.2526447599106,14.2206331484184"
-                    Point2="-66.2526447599106,14.2206331484184"
-                    Point3="-66.2526447599106,18.2206331484184" />
-                  <mssgle:LineSegment
-                    End="-66.2526447599106,20.9412662968369" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="934.578695968552,174.999998269478">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-37.3287080571192,31.9785694580278"
-              Start="0,0"
-              End="-37.3287080571192,24.4785694580278">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.9892847290139" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.9892847290139"
-                    Point2="0,15.9892847290139"
-                    Point3="-4,15.9892847290139" />
-                  <mssgle:LineSegment
-                    End="-33.3287080571192,15.9892847290139" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-33.3287080571192,15.9892847290139"
-                    Point2="-37.3287080571192,15.9892847290139"
-                    Point3="-37.3287080571192,19.9892847290139" />
-                  <mssgle:LineSegment
-                    End="-37.3287080571192,24.4785694580278" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="137.262567898315,295.584917622374" />
         <NodeLayout
           Size="230.666666666667,42.6666666666667"
-          Id="Package\Truncate Stock_Item Dimension"
-          TopLeft="1.46990984695513,133.826386972724" />
+          Id="Package\Truncate Pur_Orders Dimension"
+          TopLeft="874.946318281554,436.460711932033" />
         <NodeLayout
           Size="230.666666666667,42.6666666666667"
           Id="Package\Truncate Sell_Orders Dimension"
-          TopLeft="252.924103373994,134.604365063591" />
+          TopLeft="557.576877224695,134.604365063591" />
+        <NodeLayout
+          Size="230.666666666667,42.6666666666667"
+          Id="Package\Truncate Stock_Item Dimension"
+          TopLeft="306.122683697656,133.826386972724" />
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\Truncate Supplier Dimension"
+          TopLeft="1082.93980388212,263.249996584157" />
+        <NodeLayout
+          Size="258.666666666667,42.6666666666667"
+          Id="Package\Truncate Warehouse_Transaction dim"
+          TopLeft="825.138877205964,139.388886396421" />
+        <NodeLayout
+          Size="249.333333333334,42.6666666666667"
+          Id="Package\Warehouse_Transactions dimension"
+          TopLeft="820.724196371193,207.561902397474" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="368.257436707328,177.271031730258">
+          TopLeft="672.910210558029,177.271031730258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3718,7 +5540,7 @@ JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="116.803243180288,176.49305363939">
+          TopLeft="421.456017030989,176.49305363939">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3750,19 +5572,117 @@ JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230.666666666667,42.6666666666667"
-          Id="Package\Truncate Pur_Orders Dimension"
-          TopLeft="429.217156220277,289.441267474029" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="544.550489553611,332.107934140695">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="954.472210539298,182.055553063088">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.28721730331301,45.7380918214719"
+              EndConnector="-9.08134750143745,25.5063493343856"
               Start="0,0"
-              End="-9.28721730331301,38.2380918214719">
+              End="-9.08134750143745,18.0063493343856">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.75317466719281" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.75317466719281"
+                    Point2="0,12.7531746671928"
+                    Point3="-4,12.7531746671928" />
+                  <mssgle:LineSegment
+                    End="-5.08134750143745,12.7531746671928" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.08134750143745,12.7531746671928"
+                    Point2="-9.08134750143745,12.7531746671928"
+                    Point3="-9.08134750143745,16.7531746671928" />
+                  <mssgle:LineSegment
+                    End="-9.08134750143745,18.0063493343856" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="247.262567898316,338.251584289041">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66.2526447599105,28.4412662968369"
+              Start="0,0"
+              End="-66.2526447599105,20.9412662968369">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.2206331484185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.2206331484185"
+                    Point2="0,14.2206331484185"
+                    Point3="-4,14.2206331484185" />
+                  <mssgle:LineSegment
+                    End="-62.2526447599105,14.2206331484185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.2526447599105,14.2206331484185"
+                    Point2="-66.2526447599105,14.2206331484185"
+                    Point3="-66.2526447599105,18.2206331484185" />
+                  <mssgle:LineSegment
+                    End="-66.2526447599105,20.9412662968369" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="1190.27313721546,305.916663250824">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.3287080571192,31.9785694580278"
+              Start="0,0"
+              End="-37.3287080571192,24.4785694580278">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.9892847290139" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.9892847290139"
+                    Point2="0,15.9892847290139"
+                    Point3="-4,15.9892847290139" />
+                  <mssgle:LineSegment
+                    End="-33.3287080571192,15.9892847290139" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.3287080571192,15.9892847290139"
+                    Point2="-37.3287080571192,15.9892847290139"
+                    Point3="-37.3287080571192,19.9892847290139" />
+                  <mssgle:LineSegment
+                    End="-37.3287080571192,24.4785694580278" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="990.279651614888,479.1273785987">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.2872173033129,45.7380918214718"
+              Start="0,0"
+              End="-9.2872173033129,38.2380918214718">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3773,13 +5693,35 @@ JOIN
                     Point2="0,22.8690459107359"
                     Point3="-4,22.8690459107359" />
                   <mssgle:LineSegment
-                    End="-5.28721730331301,22.8690459107359" />
+                    End="-5.2872173033129,22.8690459107359" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.28721730331301,22.8690459107359"
-                    Point2="-9.28721730331301,22.8690459107359"
-                    Point3="-9.28721730331301,26.8690459107359" />
+                    Point1="-5.2872173033129,22.8690459107359"
+                    Point2="-9.2872173033129,22.8690459107359"
+                    Point3="-9.2872173033129,26.8690459107359" />
                   <mssgle:LineSegment
-                    End="-9.28721730331301,38.2380918214719" />
+                    End="-9.2872173033129,38.2380918214718" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="207.479164783399,497.16666083861">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.9500010277969"
+              Start="0,0"
+              End="0,40.4500010277969">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.4500010277969" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3792,81 +5734,10 @@ JOIN
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Purchasing_orders dimension">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="198.666666666667,41.3333333333334"
-          Id="Package\Purchasing_orders dimension\OLE DB Source PO_query"
-          TopLeft="147.1922048732,26.0966466444907" />
-        <NodeLayout
-          Size="115.333333333334,41.3333333333334"
-          Id="Package\Purchasing_orders dimension\PO_dim"
-          TopLeft="316.12076286868,168.592439976253" />
-        <EdgeLayout
-          Id="Package\Purchasing_orders dimension.Paths[OLE DB Source Output]"
-          TopLeft="246.525538206533,67.429979977824">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.261891328813,101.162459998429"
-              Start="0,0"
-              End="127.261891328813,93.662459998429">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.5812299992145" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.5812299992145"
-                    Point2="0,50.5812299992145"
-                    Point3="4,50.5812299992145" />
-                  <mssgle:LineSegment
-                    End="123.261891328813,50.5812299992145" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.261891328813,50.5812299992145"
-                    Point2="127.261891328813,50.5812299992145"
-                    Point3="127.261891328813,54.5812299992145" />
-                  <mssgle:LineSegment
-                    End="127.261891328813,93.662459998429" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Purchasing_orders dimension\OLE DB Source PO_query">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Purchasing_orders dimension\PO_dim">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\customer dimension">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="205.333333333334,41.3333333333334"
           Id="Package\customer dimension\OLE DB Source Cust_query"
@@ -3906,7 +5777,795 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Date Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Date Dimension\Stock Item Issue Date"
+          TopLeft="954.695427094706,136.840473743578" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Date Dimension\SalesOrders Date"
+          TopLeft="706.061499484978,14.17142827034" />
+        <NodeLayout
+          Size="252,42.6666666666667"
+          Id="Package\Date Dimension\Sales Orders Expected Delivery Date"
+          TopLeft="810.436497929669,63.8238083825513" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\Date Dimension\Sales OrderLine Completed Date"
+          TopLeft="175.282735483321,251.849994559927" />
+        <NodeLayout
+          Size="240,42.6666666666667"
+          Id="Package\Date Dimension\PurchasingExpected Delivery Date"
+          TopLeft="421.805551339769,111.904760022958" />
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\Date Dimension\purchasingDate"
+          TopLeft="605.763881931909,63.8047608830532" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\LastReceipt Date"
+          TopLeft="364.374994570389,189.688091965416" />
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\Date Dimension\date Dimension"
+          TopLeft="633.137963703482,946.48277704193" />
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\StockItem Receipt Date"
+          TopLeft="1080.72915164111,285.980947386424" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\Union for Date DataType columns"
+          TopLeft="573.650787172337,552.419832087192" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output]"
+          TopLeft="541.805551339769,154.571426689625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.734124721457,397.848405397567"
+              Start="0,0"
+              End="112.734124721457,390.348405397567">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,233.119415869582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,233.119415869582"
+                    Point2="0,237.119415869582"
+                    Point3="4,237.119415869582" />
+                  <mssgle:LineSegment
+                    End="108.734124721457,237.119415869582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.734124721457,237.119415869582"
+                    Point2="112.734124721457,237.119415869582"
+                    Point3="112.734124721457,241.119415869582" />
+                  <mssgle:LineSegment
+                    End="112.734124721457,390.348405397567" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output1]"
+          TopLeft="681.299927144715,106.47142754972">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,445.948404537472"
+              Start="0,0"
+              End="0,438.448404537472">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,438.448404537472" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output2]"
+          TopLeft="786.728166151645,56.8380949370066">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-80.9292308311599,495.581737150186"
+              Start="0,0"
+              End="-80.9292308311599,488.081737150186">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,257.85050132796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,257.85050132796"
+                    Point2="0,261.85050132796"
+                    Point3="-4,261.85050132796" />
+                  <mssgle:LineSegment
+                    End="-76.9292308311599,261.85050132796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-76.9292308311599,261.85050132796"
+                    Point2="-80.9292308311599,261.85050132796"
+                    Point3="-80.9292308311599,265.85050132796" />
+                  <mssgle:LineSegment
+                    End="-80.9292308311599,488.081737150186" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output3]"
+          TopLeft="936.436497929669,106.490475049218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-205.007932979555,445.929357037974"
+              Start="0,0"
+              End="-205.007932979555,438.429357037974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,261.77587650321" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,261.77587650321"
+                    Point2="0,265.77587650321"
+                    Point3="-4,265.77587650321" />
+                  <mssgle:LineSegment
+                    End="-201.007932979555,265.77587650321" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-201.007932979555,265.77587650321"
+                    Point2="-205.007932979555,265.77587650321"
+                    Point3="-205.007932979555,269.77587650321" />
+                  <mssgle:LineSegment
+                    End="-205.007932979555,438.429357037974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output4]"
+          TopLeft="443.708327903723,232.354758632083">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="185.201718527873,320.065073455109"
+              Start="0,0"
+              End="185.201718527873,312.565073455109">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,214.763187669148" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,214.763187669148"
+                    Point2="0,218.763187669148"
+                    Point3="4,218.763187669148" />
+                  <mssgle:LineSegment
+                    End="181.201718527873,218.763187669148" />
+                  <mssgle:CubicBezierSegment
+                    Point1="181.201718527873,218.763187669148"
+                    Point2="185.201718527873,218.763187669148"
+                    Point3="185.201718527873,222.763187669148" />
+                  <mssgle:LineSegment
+                    End="185.201718527873,312.565073455109" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\Date conversion SOLCD"
+          TopLeft="195.535711372005,332.880950072975" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output5]"
+          TopLeft="291.07589009433,294.516661226594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3642888463816"
+              Start="0,0"
+              End="0,30.8642888463816">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8642888463816" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Data Conversion Output]"
+          TopLeft="290.869044705339,375.547616739642">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="312.411372096628,176.87221534755"
+              Start="0,0"
+              End="312.411372096628,169.37221534755">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,137.69126749125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,137.69126749125"
+                    Point2="0,141.69126749125"
+                    Point3="4,141.69126749125" />
+                  <mssgle:LineSegment
+                    End="308.411372096628,141.69126749125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="308.411372096628,141.69126749125"
+                    Point2="312.411372096628,141.69126749125"
+                    Point3="312.411372096628,145.69126749125" />
+                  <mssgle:LineSegment
+                    End="312.411372096628,169.37221534755" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\date conversion SIID"
+          TopLeft="950.23808454119,214.976189186601" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output6]"
+          TopLeft="1043.13342248462,179.507140410244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.4690487763573"
+              Start="0,0"
+              End="0,27.9690487763573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9690487763573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Data Conversion Output1]"
+          TopLeft="1039.57141787452,257.642855853268">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-282.51322329478,294.776976233924"
+              Start="0,0"
+              End="-282.51322329478,287.276976233924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,197.47887514334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,197.47887514334"
+                    Point2="0,201.47887514334"
+                    Point3="-4,201.47887514334" />
+                  <mssgle:LineSegment
+                    End="-278.51322329478,201.47887514334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-278.51322329478,201.47887514334"
+                    Point2="-282.51322329478,201.47887514334"
+                    Point3="-282.51322329478,205.47887514334" />
+                  <mssgle:LineSegment
+                    End="-282.51322329478,287.276976233924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Date Dimension\Date Conversion SIRD"
+          TopLeft="1088.98808298455,364.166663594899" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[OLE DB Source Output7]"
+          TopLeft="1178.5252839795,328.647614053091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.519049541808"
+              Start="0,0"
+              End="0,28.019049541808">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.019049541808" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Data Conversion Output2]"
+          TopLeft="1180.98808298455,406.833330261566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-398.300258775178,145.586501825627"
+              Start="0,0"
+              End="-398.300258775178,138.086501825627">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,112.628470632066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,112.628470632066"
+                    Point2="0,116.628470632066"
+                    Point3="-4,116.628470632066" />
+                  <mssgle:LineSegment
+                    End="-394.300258775178,116.628470632066" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-394.300258775178,116.628470632066"
+                    Point2="-398.300258775178,116.628470632066"
+                    Point3="-398.300258775178,120.628470632066" />
+                  <mssgle:LineSegment
+                    End="-398.300258775178,138.086501825627" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="98.6666666666667,42.6666666666667"
+          Id="Package\Date Dimension\Sort"
+          TopLeft="651.2499913387,670.694441829291" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Union All Output 1]"
+          TopLeft="696.783722588852,595.086498753859">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.607943075432"
+              Start="0,0"
+              End="0,68.107943075432">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.107943075432" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Date Dimension\Derived Column"
+          TopLeft="626.249991711229,764.833328955372" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Sort Output]"
+          TopLeft="702.083324858298,713.361108495957">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.4722204594149"
+              Start="0,0"
+              End="0,43.9722204594149">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.9722204594149" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Date Dimension\Data Conversion"
+          TopLeft="631.249990593642,856.23809261464" />
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Derived Column Output]"
+          TopLeft="706.749991152436,807.499995622039">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.7380969926006"
+              Start="0,0"
+              End="0,41.2380969926006">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.2380969926006" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Date Dimension.Paths[Data Conversion Output3]"
+          TopLeft="709.860643815229,898.904759281306">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.5780177606239"
+              Start="0,0"
+              End="0,40.0780177606239">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.0780177606239" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\Stock Item Issue Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\SalesOrders Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\Sales Orders Expected Delivery Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\Sales OrderLine Completed Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\PurchasingExpected Delivery Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\purchasingDate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\LastReceipt Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\date Dimension">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date Dimension\StockItem Receipt Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Purchasing_orders dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="115.333333333334,41.3333333333334"
+          Id="Package\Purchasing_orders dimension\PO_dim"
+          TopLeft="316.12076286868,168.592439976253" />
+        <NodeLayout
+          Size="198.666666666667,41.3333333333334"
+          Id="Package\Purchasing_orders dimension\OLE DB Source PO_query"
+          TopLeft="147.1922048732,26.0966466444907" />
+        <EdgeLayout
+          Id="Package\Purchasing_orders dimension.Paths[OLE DB Source Output]"
+          TopLeft="246.525538206533,67.429979977824">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.261891328813,101.162459998429"
+              Start="0,0"
+              End="127.261891328813,93.662459998429">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5812299992145" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.5812299992145"
+                    Point2="0,50.5812299992145"
+                    Point3="4,50.5812299992145" />
+                  <mssgle:LineSegment
+                    End="123.261891328813,50.5812299992145" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.261891328813,50.5812299992145"
+                    Point2="127.261891328813,50.5812299992145"
+                    Point3="127.261891328813,54.5812299992145" />
+                  <mssgle:LineSegment
+                    End="127.261891328813,93.662459998429" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Purchasing_orders dimension\OLE DB Source PO_query">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Purchasing_orders dimension\PO_dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Selling_Orders dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Selling_Orders dimension\Sell_Orders Dim"
+          TopLeft="320.769230769231,117.692307692308" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Selling_Orders dimension\Sell_Orders data"
+          TopLeft="116.384615384615,33.9230769230769" />
+        <EdgeLayout
+          Id="Package\Selling_Orders dimension.Paths[OLE DB Source Output]"
+          TopLeft="195.051282051282,76.5897435897436">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="203.717948717949,41.1025641025641"
+              Start="0,0"
+              End="203.717948717949,33.6025641025641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5512820512821" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5512820512821"
+                    Point2="0,20.5512820512821"
+                    Point3="4,20.5512820512821" />
+                  <mssgle:LineSegment
+                    End="199.717948717949,20.5512820512821" />
+                  <mssgle:CubicBezierSegment
+                    Point1="199.717948717949,20.5512820512821"
+                    Point2="203.717948717949,20.5512820512821"
+                    Point3="203.717948717949,24.5512820512821" />
+                  <mssgle:LineSegment
+                    End="203.717948717949,33.6025641025641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Selling_Orders dimension\Sell_Orders data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Selling_Orders dimension\Sell_Orders Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Stock_items dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="143.333333333334,41.3333333333334"
+          Id="Package\Stock_items dimension\SI_dim"
+          TopLeft="326,116" />
+        <NodeLayout
+          Size="195.333333333334,41.3333333333334"
+          Id="Package\Stock_items dimension\OLE DB Source SI_query"
+          TopLeft="222.857148440517,19.6470596600572" />
+        <EdgeLayout
+          Id="Package\Stock_items dimension.Paths[OLE DB Source Output]"
+          TopLeft="320.523815107184,60.9803929933906">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.142851559483,55.0196070066094"
+              Start="0,0"
+              End="77.142851559483,47.5196070066094">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5098035033047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5098035033047"
+                    Point2="0,27.5098035033047"
+                    Point3="4,27.5098035033047" />
+                  <mssgle:LineSegment
+                    End="73.142851559483,27.5098035033047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73.142851559483,27.5098035033047"
+                    Point2="77.142851559483,27.5098035033047"
+                    Point3="77.142851559483,31.5098035033047" />
+                  <mssgle:LineSegment
+                    End="77.142851559483,47.5196070066094" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3916,7 +6575,7 @@ JOIN
     design-time-name="Package\suppliers dimension">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="118.666666666667,41.3333333333334"
           Id="Package\suppliers dimension\sup_dim"
@@ -3956,146 +6615,27 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <TaskHost
-    design-time-name="Package\Stock_items dimension">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="195.333333333334,41.3333333333334"
-          Id="Package\Stock_items dimension\OLE DB Source SI_query"
-          TopLeft="222.857148440517,19.6470596600572" />
-        <NodeLayout
-          Size="143.333333333334,41.3333333333334"
-          Id="Package\Stock_items dimension\SI_dim"
-          TopLeft="326,116" />
-        <EdgeLayout
-          Id="Package\Stock_items dimension.Paths[OLE DB Source Output]"
-          TopLeft="320.523815107184,60.9803929933906">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77.142851559483,55.0196070066094"
-              Start="0,0"
-              End="77.142851559483,47.5196070066094">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5098035033047" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5098035033047"
-                    Point2="0,27.5098035033047"
-                    Point3="4,27.5098035033047" />
-                  <mssgle:LineSegment
-                    End="73.142851559483,27.5098035033047" />
-                  <mssgle:CubicBezierSegment
-                    Point1="73.142851559483,27.5098035033047"
-                    Point2="77.142851559483,27.5098035033047"
-                    Point3="77.142851559483,31.5098035033047" />
-                  <mssgle:LineSegment
-                    End="77.142851559483,47.5196070066094" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Selling_Orders dimension">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="157.333333333334,42.6666666666667"
-          Id="Package\Selling_Orders dimension\Sell_Orders data"
-          TopLeft="116.384615384615,33.9230769230769" />
-        <NodeLayout
-          Size="156,42.6666666666667"
-          Id="Package\Selling_Orders dimension\Sell_Orders Dim"
-          TopLeft="320.769230769231,117.692307692308" />
-        <EdgeLayout
-          Id="Package\Selling_Orders dimension.Paths[OLE DB Source Output]"
-          TopLeft="195.051282051282,76.5897435897436">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="203.717948717949,41.1025641025641"
-              Start="0,0"
-              End="203.717948717949,33.6025641025641">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5512820512821" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5512820512821"
-                    Point2="0,20.5512820512821"
-                    Point3="4,20.5512820512821" />
-                  <mssgle:LineSegment
-                    End="199.717948717949,20.5512820512821" />
-                  <mssgle:CubicBezierSegment
-                    Point1="199.717948717949,20.5512820512821"
-                    Point2="203.717948717949,20.5512820512821"
-                    Point3="203.717948717949,24.5512820512821" />
-                  <mssgle:LineSegment
-                    End="203.717948717949,33.6025641025641" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Selling_Orders dimension\Sell_Orders data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Selling_Orders dimension\Sell_Orders Dim">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Warehouse_Transactions dimension">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="184,42.6666666666667"
-          Id="Package\Warehouse_Transactions dimension\warehouse_trans data"
-          TopLeft="151,67" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="244,42.6666666666667"
           Id="Package\Warehouse_Transactions dimension\warehouse_transactions dimension"
           TopLeft="340,160.769230769231" />
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Warehouse_Transactions dimension\warehouse_trans data"
+          TopLeft="151,67" />
         <EdgeLayout
           Id="Package\Warehouse_Transactions dimension.Paths[OLE DB Source Output]"
           TopLeft="243,109.666666666667">
@@ -4127,7 +6667,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
