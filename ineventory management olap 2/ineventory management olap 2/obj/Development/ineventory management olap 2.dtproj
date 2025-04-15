@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">YASMINE_LAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgyuzSN8R1Ue1Is/W69XqCgAAAAACAAAAAAAQZgAAAAEAACAAAACG5spqNWRw/RE82rxdFSkgniL5IWkLow0F2xPt8qDf4wAAAAAOgAAAAAIAACAAAAD913SmSYDC9O/uWDrSii65+4EWa8ApvHQgtrRJ7EJNFZAAAACNOS4ctOlKIQ3/NvwNxOmmnAWQhSa0Zbm84csmdahbLxuB1xd7p7tB9+JonLzO+fWEEj0D2E7lX1cYfDkahcK4CBti6YRh1xb1k9pwB28aGvsx08JbxWB5ny5D/4+G/5MWyPeT3Y8csl5CBe9N0jhWboqu2E/SDTy9StwmdHwxzu/49ENehfQdgoLSEow22VRAAAAAO8lOuDdvm7DrWbn9BTjNJaLL/8AyZ1sZiKiAUJzOAVcav/i1W5Id/szLD+YN5DLOJcUasKiLVdRNzU0Wfx8BjA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKMex5Tiv6US6gyYJIFV3FwAAAAACAAAAAAAQZgAAAAEAACAAAADHG9m18iB6NimAMAwpk35vRvebW8kXkojQ//2NDQbFIQAAAAAOgAAAAAIAACAAAAB7EEI+oTMWl05F22hCn/fra6VYJXnHpdfaPl4oH1SB0ZAAAACQCnjuFYsRLk9wwru/xGy0EfV0qPXh70FVQI8l8JzcXUeTAqnNPsTd2kbDJS33XXCIMQ4Y/VFsuMbztu0TI/xmJHPp6yBVDoyzzaMOBMiNj8V6M9pGB9WRFHBr9XmXya0WL7i7n8zO2nyE0If6tRialftscTC1DJ/lXYkOXSN55Pa0VIgWynGyNqTHM49isMRAAAAANkC8wIFQcKXBiDMgLrfR3uAEunoITaDgr5Ei6teuU9cubwFix/LVdVkFM/k8WAsq+Ohso+fZ3SBlFsrP/x4ryg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5C901A8E-4C37-402F-9391-6890535F719B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{8A571C08-FEAB-43EB-AC99-EE30C20EF173}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -78,7 +78,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=YASMINE_LAPTOP\MSSQLSERVER02;Initial Catalog=WWI_DW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{0F61DD1C-20CF-4802-BA07-1AEA07379ED0}YASMINE_LAPTOP\MSSQLSERVER02.WWI_DW;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=YOUSSEF-LAPTOP\SQLEXPRESS;Initial Catalog=WWI_DW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{0F61DD1C-20CF-4802-BA07-1AEA07379ED0}YASMINE_LAPTOP\MSSQLSERVER02.WWI_DW;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -182,7 +182,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">YASMINE_LAPTOP\MSSQLSERVER02</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">YOUSSEF-LAPTOP\SQLEXPRESS</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -226,7 +226,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=YASMINE_LAPTOP\MSSQLSERVER02;Initial Catalog=WideWorldImporters;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{CE6217E6-EF51-4FC0-A315-0E23AB555878}YASMINE_LAPTOP\MSSQLSERVER02.WideWorldImporters;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=YOUSSEF-LAPTOP\SQLEXPRESS;Initial Catalog=WideWorldImporters;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{CE6217E6-EF51-4FC0-A315-0E23AB555878}YASMINE_LAPTOP\MSSQLSERVER02.WideWorldImporters;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -330,7 +330,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">YASMINE_LAPTOP\MSSQLSERVER02</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">YOUSSEF-LAPTOP\SQLEXPRESS</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
