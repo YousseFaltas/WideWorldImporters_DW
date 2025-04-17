@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{1F832461-D05B-4BAF-AFC0-F021339BD828}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{6D5CCAED-F6BB-4D69-99FE-B40CB6CAA6F9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2411,7 +2411,7 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute SQL Task"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2477,16 +2477,6 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
                       cachedScale="3"
                       lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[Quantity]" />
                     <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[StockItemID]"
-                      cachedDataType="i4"
-                      cachedName="StockItemID"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[StockItemID]" />
-                    <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[SupplierID]"
-                      cachedDataType="i4"
-                      cachedName="SupplierID"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[SupplierID]" />
-                    <inputColumn
                       refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[OrderedOuters]"
                       cachedDataType="i4"
                       cachedName="OrderedOuters"
@@ -2497,10 +2487,50 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
                       cachedName="ReceivedOuters"
                       lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[ReceivedOuters]" />
                     <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[PurchaseOrderID]"
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[SupplierKey]"
                       cachedDataType="i4"
-                      cachedName="PurchaseOrderID"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]" />
+                      cachedName="SupplierKey"
+                      lineageId="Package\Inventory Movement Fact Table\SupplierId Lookup.Outputs[Lookup Match Output].Columns[SupplierKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[StockItemKey]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[WarehouseTransactionDimID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseTransactionDimID"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output].Columns[WarehouseTransactionDimID]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[PurchasingOrderDimID]"
+                      cachedDataType="i4"
+                      cachedName="PurchasingOrderDimID"
+                      lineageId="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup.Outputs[Lookup Match Output].Columns[PurchasingOrderDimID]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[LeadTimeDays]"
+                      cachedDataType="i4"
+                      cachedName="LeadTimeDays"
+                      lineageId="Package\Inventory Movement Fact Table\Lead Time Days Derived Column.Outputs[Derived Column Output].Columns[LeadTimeDays]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[POrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="POrderDateKey"
+                      lineageId="Package\Inventory Movement Fact Table\POrderDate Lookup.Outputs[Lookup Match Output].Columns[POrderDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[PExpectedDelDateKey]"
+                      cachedDataType="i4"
+                      cachedName="PExpectedDelDateKey"
+                      lineageId="Package\Inventory Movement Fact Table\PExpectedDate Lookup.Outputs[Lookup Match Output].Columns[PExpectedDelDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[StockitemReceiptDateKey]"
+                      cachedDataType="i4"
+                      cachedName="StockitemReceiptDateKey"
+                      lineageId="Package\Inventory Movement Fact Table\StockReceiptDate Lookup.Outputs[Lookup Match Output].Columns[StockitemReceiptDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Inputs[Aggregate Input 1].Columns[LastReceiptDateKey]"
+                      cachedDataType="i4"
+                      cachedName="LastReceiptDateKey"
+                      lineageId="Package\Inventory Movement Fact Table\LastReceiptDate Lookup.Outputs[Lookup Match Output].Columns[LastReceiptDateKey]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2539,58 +2569,6 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
                           description="Specifies the type of aggregation."
                           name="AggregationType"
                           typeConverter="AggregationType">4</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockItemID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockItemID]"
-                      name="StockItemID">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[StockItemID]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
-                          name="IsBig">1</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the string comparison options."
-                          name="AggregationComparisonFlags">0</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[SupplierID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[SupplierID]"
-                      name="SupplierID">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[SupplierID]}</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the type of aggregation."
-                          name="AggregationType"
-                          typeConverter="AggregationType">0</property>
                         <property
                           dataType="System.Int32"
                           description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
@@ -2654,16 +2632,16 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PurchaseOrderID]"
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[SupplierKey]"
                       dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PurchaseOrderID]"
-                      name="PurchaseOrderID">
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[SupplierKey]"
+                      name="SupplierKey">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the ID of the input column used in the aggregation."
-                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]}</property>
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\SupplierId Lookup.Outputs[Lookup Match Output].Columns[SupplierKey]}</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the type of aggregation."
@@ -2679,6 +2657,439 @@ LEFT JOIN Application.Cities ct ON c.DeliveryCityID = ct.CityID;</property>
                           name="AggregationComparisonFlags">0</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockItemKey]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockItemKey]"
+                      name="StockItemKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[WarehouseTransactionDimID]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[WarehouseTransactionDimID]"
+                      name="WarehouseTransactionDimID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output].Columns[WarehouseTransactionDimID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PurchasingOrderDimID]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PurchasingOrderDimID]"
+                      name="PurchasingOrderDimID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup.Outputs[Lookup Match Output].Columns[PurchasingOrderDimID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LeadTimeDays]"
+                      dataType="r8"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LeadTimeDays]"
+                      name="LeadTimeDays">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\Lead Time Days Derived Column.Outputs[Derived Column Output].Columns[LeadTimeDays]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">5</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[POrderDateKey]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[POrderDateKey]"
+                      name="POrderDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\POrderDate Lookup.Outputs[Lookup Match Output].Columns[POrderDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PExpectedDelDateKey]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PExpectedDelDateKey]"
+                      name="PExpectedDelDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\PExpectedDate Lookup.Outputs[Lookup Match Output].Columns[PExpectedDelDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockitemReceiptDateKey]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockitemReceiptDateKey]"
+                      name="StockitemReceiptDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\StockReceiptDate Lookup.Outputs[Lookup Match Output].Columns[StockitemReceiptDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LastReceiptDateKey]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LastReceiptDateKey]"
+                      name="LastReceiptDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Inventory Movement Fact Table\LastReceiptDate Lookup.Outputs[Lookup Match Output].Columns[LastReceiptDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Inventory Movement Fact Table\Fact Table Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact Table Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactInventoryMovement]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Inventory Movement Fact Table\Fact Table Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[SupplierKey]"
+                      cachedDataType="i4"
+                      cachedName="SupplierKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[SupplierKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[SupplierKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[StockItemKey]"
+                      cachedDataType="i4"
+                      cachedName="StockItemKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockItemKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockItemKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[WarehouseTransactionDimID]"
+                      cachedDataType="i4"
+                      cachedName="WarehouseTransactionDimID"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseTransactionDimID]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[WarehouseTransactionDimID]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[PurchasingOrderDimID]"
+                      cachedDataType="i4"
+                      cachedName="PurchasingOrderDimID"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[PurchasingOrderKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PurchasingOrderDimID]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[OrderedOuters]"
+                      cachedDataType="i8"
+                      cachedName="OrderedOuters"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityOrdered]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[OrderedOuters]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[ReceivedOuters]"
+                      cachedDataType="i8"
+                      cachedName="ReceivedOuters"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityReceived]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[ReceivedOuters]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[StockReceiptQuantity]"
+                      cachedDataType="numeric"
+                      cachedName="StockReceiptQuantity"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityStored]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockReceiptQuantity]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[POrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="POrderDateKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[POrderDateKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[POrderDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[PExpectedDelDateKey]"
+                      cachedDataType="i4"
+                      cachedName="PExpectedDelDateKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[POrderExpectedDelDateKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[PExpectedDelDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[LastReceiptDateKey]"
+                      cachedDataType="i4"
+                      cachedName="LastReceiptDateKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemLReceiptDateKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LastReceiptDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[StockitemReceiptDateKey]"
+                      cachedDataType="i4"
+                      cachedName="StockitemReceiptDateKey"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockReceiptDateKey]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[StockitemReceiptDateKey]" />
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].Columns[LeadTimeDays]"
+                      cachedDataType="r8"
+                      cachedName="LeadTimeDays"
+                      externalMetadataColumnId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[LeadTimeDays]"
+                      lineageId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1].Columns[LeadTimeDays]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[POrderDateKey]"
+                      dataType="i4"
+                      name="POrderDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[POrderExpectedDelDateKey]"
+                      dataType="i4"
+                      name="POrderExpectedDelDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[ItemLReceiptDateKey]"
+                      dataType="i4"
+                      name="ItemLReceiptDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockReceiptDateKey]"
+                      dataType="i4"
+                      name="StockReceiptDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[StockItemKey]"
+                      dataType="i4"
+                      name="StockItemKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[PurchasingOrderKey]"
+                      dataType="i4"
+                      name="PurchasingOrderKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[SupplierKey]"
+                      dataType="i4"
+                      name="SupplierKey" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarehouseTransactionDimID]"
+                      dataType="i4"
+                      name="WarehouseTransactionDimID" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityOrdered]"
+                      dataType="i4"
+                      name="QuantityOrdered" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityReceived]"
+                      dataType="i4"
+                      name="QuantityReceived" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[QuantityStored]"
+                      dataType="i4"
+                      name="QuantityStored" />
+                    <externalMetadataColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input].ExternalColumns[LeadTimeDays]"
+                      dataType="i4"
+                      name="LeadTimeDays" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Inventory Movement Fact Table\Fact Table Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Fact Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Inventory Movement Fact Table\Fact Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Inventory Movement Fact Table\Fact Table Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -3551,138 +3962,11 @@ where [refTable].[WWI_PurchasingOrderID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Inventory Movement Fact Table\Sales Data Converion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Sales Data Converion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input].Columns[TransactionOccurredWhen]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="TransactionOccurredWhen"
-                      cachedScale="7"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionOccurredWhen]" />
-                    <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input].Columns[InvoiceDate]"
-                      cachedDataType="dbDate"
-                      cachedName="InvoiceDate"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceDate]" />
-                    <inputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input].Columns[ConfirmedDeliveryTime]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="ConfirmedDeliveryTime"
-                      cachedScale="7"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[ConfirmedDeliveryTime]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedStockIssueDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedStockIssueDate]"
-                      name="ConvertedStockIssueDate"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionOccurredWhen]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedInvoiceDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedInvoiceDate]"
-                      name="ConvertedInvoiceDate"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceDate]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedConfirmedDeliveryTime]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Output].Columns[ConvertedConfirmedDeliveryTime]"
-                      name="ConvertedConfirmedDeliveryTime"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[ConfirmedDeliveryTime]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\Sales Data Converion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup"
+              refId="Package\Inventory Movement Fact Table\StockItemID Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="StockItem Transaction Lookup"
+              name="StockItemID Lookup"
               usesDispositions="true"
               version="6">
               <properties>
@@ -3746,7 +4030,7 @@ where [refTable].[StockItemID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Connections[OleDbConnection]"
+                  refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Destination DW]"
                   connectionManagerRefId="Package.ConnectionManagers[Destination DW]"
                   description="Connection manager used to access lookup data."
@@ -3754,11 +4038,11 @@ where [refTable].[StockItemID] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input]"
+                  refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input].Columns[StockItemID]"
+                      refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input].Columns[StockItemID]"
                       cachedDataType="i4"
                       cachedName="StockItemID"
                       lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[StockItemID]">
@@ -3779,18 +4063,18 @@ where [refTable].[StockItemID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Match Output]"
+                  refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]"
+                      refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output].Columns[StockItemKey]"
                       name="StockItemKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -3804,30 +4088,30 @@ where [refTable].[StockItemID] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup No Match Output]"
+                  refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3836,293 +4120,156 @@ where [refTable].[StockItemID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="StockItemTransactions + Sales data"
+              refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="StockItemTransactionKey Lookup"
               usesDispositions="true"
-              version="7">
+              version="6">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    sit.StockItemTransactionID,
-    sit.StockItemID,
-    sit.InvoiceID,
-    sit.TransactionTypeID,
-    sit.Quantity,
-    sit.TransactionOccurredWhen,
-    sit.CustomerID,
-    si.InvoiceDate,
-    si.ConfirmedDeliveryTime,
-    si.CustomerID AS SI_CustomerID
-FROM 
-    Warehouse.StockItemTransactions AS sit
-INNER JOIN 
-    Sales.Invoices AS si 
-    ON sit.InvoiceID = si.InvoiceID</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[WarehouseTransactionDim]</property>
                 <property
                   dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[WarehouseTransactionDim]) [refTable]
+where [refTable].[WWIStockItemTransactionID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="WarehouseTransactionDimID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WWIStockItemTransactionID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StockItemID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransactionTypeName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TransactionOccurredWhen" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="Quantity" dataType="DT_NUMERIC" length="0" precision="18" scale="3" codePage="0"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[StockItemTransactionID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1252</property>
                 <property
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Source DB]"
-                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
-                  description="The OLE DB runtime connection used to access the database."
+                  refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination DW]"
+                  description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
+              <inputs>
+                <input
+                  refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input].Columns[StockItemTransactionID]"
+                      cachedDataType="i4"
+                      cachedName="StockItemTransactionID"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output].Columns[StockItemTransactionID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">WWIStockItemTransactionID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
               <outputs>
                 <output
-                  refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
+                  refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[StockItemTransactionID]"
+                      refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output].Columns[WarehouseTransactionDimID]"
                       dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[StockItemTransactionID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[StockItemTransactionID]"
-                      name="StockItemTransactionID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[StockItemID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[StockItemID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[StockItemID]"
-                      name="StockItemID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceID]"
-                      name="InvoiceID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionTypeID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionTypeID]"
-                      name="TransactionTypeID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[Quantity]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[Quantity]"
-                      name="Quantity"
-                      precision="18"
-                      scale="3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionOccurredWhen]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[TransactionOccurredWhen]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[TransactionOccurredWhen]"
-                      name="TransactionOccurredWhen"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      name="CustomerID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[InvoiceDate]"
-                      name="InvoiceDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[ConfirmedDeliveryTime]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[ConfirmedDeliveryTime]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[ConfirmedDeliveryTime]"
-                      name="ConfirmedDeliveryTime"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[SI_CustomerID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[SI_CustomerID]"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].Columns[SI_CustomerID]"
-                      name="SI_CustomerID"
-                      truncationRowDisposition="FailComponent" />
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output].Columns[WarehouseTransactionDimID]"
+                      name="WarehouseTransactionDimID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">WarehouseTransactionDimID</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[StockItemTransactionID]"
-                      dataType="i4"
-                      name="StockItemTransactionID" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[StockItemID]"
-                      dataType="i4"
-                      name="StockItemID" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID]"
-                      dataType="i4"
-                      name="InvoiceID" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeID]"
-                      dataType="i4"
-                      name="TransactionTypeID" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      dataType="numeric"
-                      name="Quantity"
-                      precision="18"
-                      scale="3" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[TransactionOccurredWhen]"
-                      dataType="dbTimeStamp2"
-                      name="TransactionOccurredWhen"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
-                      dataType="i4"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[InvoiceDate]"
-                      dataType="dbDate"
-                      name="InvoiceDate" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[ConfirmedDeliveryTime]"
-                      dataType="dbTimeStamp2"
-                      name="ConfirmedDeliveryTime"
-                      scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output].ExternalColumns[SI_CustomerID]"
-                      dataType="i4"
-                      name="SI_CustomerID" />
-                  </externalMetadataColumns>
+                  <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
                   isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[StockItemTransactionID]"
+                      refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[StockItemTransactionID]"
-                      name="StockItemTransactionID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[StockItemID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[StockItemID]"
-                      name="StockItemID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[InvoiceID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[InvoiceID]"
-                      name="InvoiceID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[TransactionTypeID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[TransactionTypeID]"
-                      name="TransactionTypeID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[Quantity]"
-                      dataType="numeric"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[Quantity]"
-                      name="Quantity"
-                      precision="18"
-                      scale="3" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[TransactionOccurredWhen]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[TransactionOccurredWhen]"
-                      name="TransactionOccurredWhen"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      name="CustomerID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
-                      dataType="dbDate"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[InvoiceDate]"
-                      name="InvoiceDate" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ConfirmedDeliveryTime]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ConfirmedDeliveryTime]"
-                      name="ConfirmedDeliveryTime"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[SI_CustomerID]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[SI_CustomerID]"
-                      name="SI_CustomerID" />
-                    <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4810,6 +4957,11 @@ where [refTable].[WWISupplierID] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\Inventory Movement Fact Table.Paths[Aggregate Output 1]"
+              endId="Package\Inventory Movement Fact Table\Fact Table Destination.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Inventory Movement Fact Table\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
               refId="Package\Inventory Movement Fact Table.Paths[Data Conversion Output]"
               endId="Package\Inventory Movement Fact Table\POrderDate Lookup.Inputs[Lookup Input]"
               name="Data Conversion Output"
@@ -4836,7 +4988,7 @@ where [refTable].[WWISupplierID] = ?</property>
               startId="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Inventory Movement Fact Table.Paths[Lookup Match Output3]"
-              endId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Inputs[Lookup Input]"
+              endId="Package\Inventory Movement Fact Table\StockItemID Lookup.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Inventory Movement Fact Table\SupplierId Lookup.Outputs[Lookup Match Output]" />
             <path
@@ -4851,19 +5003,19 @@ where [refTable].[WWISupplierID] = ?</property>
               startId="Package\Inventory Movement Fact Table\LastReceiptDate Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Inventory Movement Fact Table.Paths[Lookup Match Output6]"
+              endId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Inventory Movement Fact Table\StockItemID Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Inventory Movement Fact Table.Paths[Lookup Match Output7]"
               endId="Package\Inventory Movement Fact Table\Lead Time Days Derived Column.Inputs[Derived Column Input]"
               name="Lookup Match Output"
-              startId="Package\Inventory Movement Fact Table\StockItem Transaction Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Inventory Movement Fact Table.Paths[OLE DB Source Output]"
               endId="Package\Inventory Movement Fact Table\Purchasing Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Inventory Movement Fact Table.Paths[OLE DB Source Output1]"
-              endId="Package\Inventory Movement Fact Table\Sales Data Converion.Inputs[Data Conversion Input]"
-              name="OLE DB Source Output"
-              startId="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -5422,549 +5574,6 @@ WHERE po.SupplierID IS NOT NULL;</property>
               endId="Package\Purchasing_orders dimension\PO_dim.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Purchasing_orders dimension\OLE DB Source PO_query.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Selling_Orders dimension"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{DFB18256-BEA9-44D1-95C8-9D10A5873DA1}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Selling_Orders dimension"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Selling_Orders dimension\Sell_Orders data"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="Sell_Orders data"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    o.CustomerID,
-    o.OrderDate,
-    o.ExpectedDeliveryDate,
-    o.CustomerPurchaseOrderNumber,
-    ol.StockItemID,
-    pt.PackageTypeName,
-    ol.Quantity,
-    ol.UnitPrice,
-    ol.PickedQuantity,
-    ol.PickingCompletedWhen
-FROM 
-    Sales.Orders o
-JOIN 
-    Sales.OrderLines ol ON o.OrderID = ol.OrderID
-JOIN 
-    Warehouse.StockItems si ON ol.StockItemID = si.StockItemID
-JOIN 
-    Warehouse.PackageTypes pt ON ol.PackageTypeID = pt.PackageTypeID;</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Selling_Orders dimension\Sell_Orders data.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Source DB]"
-                  connectionManagerRefId="Package.ConnectionManagers[Source DB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerID]"
-                      name="CustomerID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[OrderDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[OrderDate]"
-                      name="OrderDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[ExpectedDeliveryDate]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[ExpectedDeliveryDate]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[ExpectedDeliveryDate]"
-                      name="ExpectedDeliveryDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerPurchaseOrderNumber]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[CustomerPurchaseOrderNumber]"
-                      length="20"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerPurchaseOrderNumber]"
-                      name="CustomerPurchaseOrderNumber"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[StockItemID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[StockItemID]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[StockItemID]"
-                      name="StockItemID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PackageTypeName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PackageTypeName]"
-                      length="50"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PackageTypeName]"
-                      name="PackageTypeName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[Quantity]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[Quantity]"
-                      name="Quantity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[UnitPrice]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[UnitPrice]"
-                      name="UnitPrice"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickedQuantity]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PickedQuantity]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickedQuantity]"
-                      name="PickedQuantity"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickingCompletedWhen]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PickingCompletedWhen]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickingCompletedWhen]"
-                      name="PickingCompletedWhen"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
-                      dataType="i4"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
-                      dataType="dbDate"
-                      name="OrderDate" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[ExpectedDeliveryDate]"
-                      dataType="dbDate"
-                      name="ExpectedDeliveryDate" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[CustomerPurchaseOrderNumber]"
-                      dataType="wstr"
-                      length="20"
-                      name="CustomerPurchaseOrderNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[StockItemID]"
-                      dataType="i4"
-                      name="StockItemID" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PackageTypeName]"
-                      dataType="wstr"
-                      length="50"
-                      name="PackageTypeName" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
-                      dataType="i4"
-                      name="Quantity" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
-                      dataType="numeric"
-                      name="UnitPrice"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PickedQuantity]"
-                      dataType="i4"
-                      name="PickedQuantity" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].ExternalColumns[PickingCompletedWhen]"
-                      dataType="dbTimeStamp2"
-                      name="PickingCompletedWhen"
-                      scale="7" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
-                      name="CustomerID" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
-                      dataType="dbDate"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
-                      name="OrderDate" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ExpectedDeliveryDate]"
-                      dataType="dbDate"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ExpectedDeliveryDate]"
-                      name="ExpectedDeliveryDate" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[CustomerPurchaseOrderNumber]"
-                      dataType="wstr"
-                      length="20"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[CustomerPurchaseOrderNumber]"
-                      name="CustomerPurchaseOrderNumber" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[StockItemID]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[StockItemID]"
-                      name="StockItemID" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PackageTypeName]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PackageTypeName]"
-                      name="PackageTypeName" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[Quantity]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[Quantity]"
-                      name="Quantity" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
-                      dataType="numeric"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
-                      name="UnitPrice"
-                      precision="18"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PickedQuantity]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PickedQuantity]"
-                      name="PickedQuantity" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PickingCompletedWhen]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[PickingCompletedWhen]"
-                      name="PickingCompletedWhen"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Selling_Orders dimension\Sell_Orders Dim"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Sell_Orders Dim"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimSellingOrderLine]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Selling_Orders dimension\Sell_Orders Dim.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Destination DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[Destination DW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[CustomerID]"
-                      cachedDataType="i4"
-                      cachedName="CustomerID"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerID]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[OrderDate]"
-                      cachedDataType="dbDate"
-                      cachedName="OrderDate"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[OrderDate]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[ExpectedDeliveryDate]"
-                      cachedDataType="dbDate"
-                      cachedName="ExpectedDeliveryDate"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[ExpectedDeliveryDate]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[ExpectedDeliveryDate]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[CustomerPurchaseOrderNumber]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="CustomerPurchaseOrderNumber"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPurchaseOrderNumber]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[CustomerPurchaseOrderNumber]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[StockItemID]"
-                      cachedDataType="i4"
-                      cachedName="StockItemID"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[StockItemID]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[StockItemID]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[PackageTypeName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="PackageTypeName"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PackageTypeName]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PackageTypeName]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[Quantity]"
-                      cachedDataType="i4"
-                      cachedName="Quantity"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[Quantity]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
-                      cachedDataType="numeric"
-                      cachedName="UnitPrice"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[PickedQuantity]"
-                      cachedDataType="i4"
-                      cachedName="PickedQuantity"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PickedQuantity]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickedQuantity]" />
-                    <inputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].Columns[PickingCompletedWhen]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="PickingCompletedWhen"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PickingCompletedWhen]"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output].Columns[PickingCompletedWhen]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[SellingOrderKey]"
-                      dataType="i4"
-                      name="SellingOrderKey" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
-                      dataType="i4"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
-                      dataType="dbDate"
-                      name="OrderDate" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[ExpectedDeliveryDate]"
-                      dataType="dbDate"
-                      name="ExpectedDeliveryDate" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[CustomerPurchaseOrderNumber]"
-                      dataType="wstr"
-                      length="20"
-                      name="CustomerPurchaseOrderNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[StockItemID]"
-                      dataType="i4"
-                      name="StockItemID" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PackageTypeName]"
-                      dataType="wstr"
-                      length="50"
-                      name="PackageTypeName" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      dataType="i4"
-                      name="Quantity" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      dataType="numeric"
-                      name="UnitPrice"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PickedQuantity]"
-                      dataType="i4"
-                      name="PickedQuantity" />
-                    <externalMetadataColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input].ExternalColumns[PickingCompletedWhen]"
-                      dataType="dbTimeStamp2"
-                      name="PickingCompletedWhen"
-                      scale="7" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Selling_Orders dimension\Sell_Orders Dim.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Selling_Orders dimension\Sell_Orders Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Selling_Orders dimension\Sell_Orders Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Selling_Orders dimension.Paths[OLE DB Source Output]"
-              endId="Package\Selling_Orders dimension\Sell_Orders Dim.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Selling_Orders dimension\Sell_Orders data.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -7261,7 +6870,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate customer Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -7278,29 +6887,12 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Pur_Orders Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{0F61DD1C-20CF-4802-BA07-1AEA07379ED0}"
           SQLTask:SqlStatementSource="DELETE FROM DimPurchasingOrderLine" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Truncate Sell_Orders Dimension"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{f859f307-d79d-4d4d-ba01-9f8f6281619a}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Truncate Sell_Orders Dimension"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{0F61DD1C-20CF-4802-BA07-1AEA07379ED0}"
-          SQLTask:SqlStatementSource="DELETE FROM DimSellingOrderLine" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -7312,7 +6904,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Stock_Item Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -7329,7 +6921,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Supplier Dimension"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -7346,7 +6938,7 @@ LEFT JOIN Application.Cities ct ON s.DeliveryCityID = ct.CityID;</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Warehouse_Transaction dim"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -7804,14 +7396,6 @@ JOIN
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{72048208-C00C-47CE-886A-516E18898E38}"
-      DTS:From="Package\Truncate Sell_Orders Dimension"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\Selling_Orders dimension" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{5D3505CE-A7D7-42C1-AAD1-A8AAC995733A}"
@@ -7819,14 +7403,6 @@ JOIN
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Stock_items dimension" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
-      DTS:CreationName=""
-      DTS:DTSID="{3CD1A0A7-244C-4684-AB3F-301052A14100}"
-      DTS:From="Package\Selling_Orders dimension"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 10"
-      DTS:To="Package\Inventory Movement Fact Table" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
       DTS:CreationName=""
@@ -7949,10 +7525,6 @@ JOIN
           Id="Package\Purchasing_orders dimension"
           TopLeft="940.897195194543,517.870232759963" />
         <NodeLayout
-          Size="198.666666666667,42.6666666666667"
-          Id="Package\Selling_Orders dimension"
-          TopLeft="569.962294163774,207.257139151097" />
-        <NodeLayout
           Size="188,42.6666666666667"
           Id="Package\Stock_items dimension"
           TopLeft="469.652771392009,288.164280382693" />
@@ -7970,10 +7542,6 @@ JOIN
           TopLeft="982.982030957411,450.822616747071" />
         <NodeLayout
           Size="230.666666666667,42.6666666666667"
-          Id="Package\Truncate Sell_Orders Dimension"
-          TopLeft="557.576877224695,134.604365063591" />
-        <NodeLayout
-          Size="230.666666666667,42.6666666666667"
           Id="Package\Truncate Stock_Item Dimension"
           TopLeft="328.444111936469,197.897814398466" />
         <NodeLayout
@@ -7988,28 +7556,6 @@ JOIN
           Size="249.333333333334,42.6666666666667"
           Id="Package\Warehouse_Transactions dimension"
           TopLeft="693.402769697001,267.919044175347" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="671.102919027568,177.271031730258">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.9861074208392"
-              Start="0,0"
-              End="0,22.4861074208392">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.4861074208392" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="443.777445269803,240.564481065133">
@@ -8036,28 +7582,6 @@ JOIN
                     Point3="119.875326122207,27.7998996587799" />
                   <mssgle:LineSegment
                     End="119.875326122207,40.0997993175598" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="667.967344268073,249.923805817763">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,443.782247162765"
-              Start="0,0"
-              End="0,436.282247162765">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,436.282247162765" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8607,7 +8131,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8629,7 +8155,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8651,7 +8179,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8673,7 +8203,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8695,7 +8227,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8729,7 +8263,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8763,7 +8299,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8797,7 +8335,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8819,7 +8359,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8853,7 +8395,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8875,7 +8419,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8909,7 +8455,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8943,7 +8491,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8977,7 +8527,9 @@ JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9091,69 +8643,49 @@ JOIN
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="270.666666666667,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data"
-          TopLeft="72.4999989196658,48.7499991282821" />
+          Size="233.333333333334,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\Lead Time Days Derived Column"
+          TopLeft="136.904759864722,937.502642063742" />
         <NodeLayout
-          Size="249.333333333334,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data"
-          TopLeft="411.874993862584,52.6499990585446" />
+          Size="172,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\POrderDate Lookup"
+          TopLeft="147.951387189225,215.763885934734" />
+        <NodeLayout
+          Size="198.666666666667,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\StockReceiptDate Lookup"
+          TopLeft="119.82638760832,400.638885072702" />
+        <NodeLayout
+          Size="193.333333333334,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\LastReceiptDate Lookup"
+          TopLeft="128.472220307837,489.907406567975" />
+        <NodeLayout
+          Size="221.333333333334,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup"
+          TopLeft="125.075755820356,582.622892849835" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\SupplierId Lookup"
+          TopLeft="154.81060386212,668.299660587652" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\StockItemID Lookup"
+          TopLeft="156.249997671693,758.129625742414" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\PExpectedDate Lookup"
+          TopLeft="132.847220747628,302.63888569259" />
         <NodeLayout
           Size="212,42.6666666666667"
           Id="Package\Inventory Movement Fact Table\Purchasing Data Conversion"
           TopLeft="103.124998463318,133.249997617304" />
         <NodeLayout
-          Size="180,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\Sales Data Converion"
-          TopLeft="448.749993313104,135.199997582436" />
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[OLE DB Source Output]"
-          TopLeft="208.479165358158,91.4166657949487">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.8333318223556"
-              Start="0,0"
-              End="0,34.3333318223556">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.3333318223556" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[OLE DB Source Output1]"
-          TopLeft="537.645826921178,95.3166657252113">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.8833318572244"
-              Start="0,0"
-              End="0,32.3833318572244">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.3833318572244" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="270.666666666667,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data"
+          TopLeft="72.4999989196658,48.7499991282821" />
         <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\POrderDate Lookup"
-          TopLeft="147.951387189225,215.763885934734" />
+          Size="128,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\Aggregate"
+          TopLeft="184.126981383278,1006.4470891298" />
         <EdgeLayout
           Id="Package\Inventory Movement Fact Table.Paths[Data Conversion Output]"
           TopLeft="209.124998463318,175.916664283971">
@@ -9188,152 +8720,26 @@ JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\PExpectedDate Lookup"
-          TopLeft="132.847220747628,302.63888569259" />
-        <NodeLayout
-          Size="198.666666666667,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\StockReceiptDate Lookup"
-          TopLeft="119.82638760832,400.638885072702" />
         <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output]"
-          TopLeft="230.399303968427,258.4305526014">
+          Id="Package\Inventory Movement Fact Table.Paths[OLE DB Source Output]"
+          TopLeft="208.479165358158,91.4166657949487">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.2083330911894"
+              EndConnector="0,41.8333318223556"
               Start="0,0"
-              End="0,36.7083330911894">
+              End="0,34.3333318223556">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.7083330911894" />
+                    End="0,34.3333318223556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.5494790455947,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output1]"
-          TopLeft="223.003470844641,345.305552359257">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.3333327134449"
-              Start="0,0"
-              End="0,47.8333327134449">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.8333327134449" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.1119788567225,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="221.333333333334,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup"
-          TopLeft="125.075755820356,582.622892849835" />
-        <NodeLayout
-          Size="165.333333333334,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\SupplierId Lookup"
-          TopLeft="154.81060386212,668.299660587652" />
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output2]"
-          TopLeft="236.609846507905,625.289559516501">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.0101010711504"
-              Start="0,0"
-              End="0,35.5101010711504">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5101010711504" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9503630355752,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="222.666666666667,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\StockItem Transaction Lookup"
-          TopLeft="130.555553610126,756.685181323798" />
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output3]"
-          TopLeft="239.683078736123,710.966327254318">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.7188540694792"
-              Start="0,0"
-              End="0,38.2188540694792">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.2188540694792" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.3047395347396,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="128,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\Aggregate"
-          TopLeft="172.222219655911,919.499999651313" />
-        <NodeLayout
-          Size="193.333333333334,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\LastReceiptDate Lookup"
-          TopLeft="128.472220307837,489.907406567975" />
-        <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output4]"
-          TopLeft="222.149303958079,443.305551739368">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.6018548286072"
-              Start="0,0"
-              End="0,39.1018548286072">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.1018548286072" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.7462399143036,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9372,48 +8778,140 @@ JOIN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="233.333333333334,42.6666666666667"
-          Id="Package\Inventory Movement Fact Table\Lead Time Days Derived Column"
-          TopLeft="123.611109269162,842.611108282871" />
         <EdgeLayout
-          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output6]"
-          TopLeft="241.083331439644,799.351847990464">
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output4]"
+          TopLeft="222.149303958079,443.305551739368">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.2592602924065"
+              EndConnector="0,46.6018548286072"
               Start="0,0"
-              End="0,35.7592602924065">
+              End="0,39.1018548286072">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.7592602924065" />
+                    End="0,39.1018548286072" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.0749426462032,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,13.7462399143036,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output3]"
+          TopLeft="240.86363410024,710.966327254319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1632984880952"
+              Start="0,0"
+              End="0,39.6632984880952">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6632984880952" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.0269617440476,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output2]"
+          TopLeft="236.609846507905,625.289559516501">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.0101010711504"
+              Start="0,0"
+              End="0,35.5101010711504">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5101010711504" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.9503630355752,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output1]"
+          TopLeft="223.003470844641,345.305552359257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.3333327134449"
+              Start="0,0"
+              End="0,47.8333327134449">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.8333327134449" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.1119788567224,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output]"
+          TopLeft="230.399303968427,258.4305526014">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.2083330911894"
+              Start="0,0"
+              End="0,36.7083330911894">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7083330911894" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.5494790455947,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Inventory Movement Fact Table.Paths[Derived Column Output]"
-          TopLeft="238.24999779587,885.277774949537">
+          TopLeft="250.849203957333,980.169308730408">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.2222247017755"
+              EndConnector="0,26.2777803993898"
               Start="0,0"
-              End="0,26.7222247017755">
+              End="0,18.7777803993898">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.7222247017755" />
+                    End="0,18.7777803993898" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9422,22 +8920,269 @@ JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="184,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\Fact Table Destination"
+          TopLeft="157.738092887615,1084.52115979449" />
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Aggregate Output 1]"
+          TopLeft="248.932537135446,1049.11375579646">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.4074039980208"
+              Start="0,0"
+              End="0,27.9074039980208">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9074039980208" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236,42.6666666666667"
+          Id="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup"
+          TopLeft="131.944442478319,827.1481469342" />
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output6]"
+          TopLeft="247.097220075006,800.79629240908">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.3518545251197"
+              Start="0,0"
+              End="0,18.8518545251197">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.8518545251197" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,3.62123976255987,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Movement Fact Table.Paths[Lookup Match Output7]"
+          TopLeft="251.757934504854,869.814813600867">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.6878284628747"
+              Start="0,0"
+              End="0,60.1878284628747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.1878284628747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,24.2892267314373,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\POrderDate Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\StockReceiptDate Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\LastReceiptDate Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimPurchasingOrderLine]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\SupplierId Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimSupplier]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\StockItemID Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimStockItem]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\PExpectedDate Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Purchasing_orders dimension">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="115.333333333334,41.3333333333334"
-          Id="Package\Purchasing_orders dimension\PO_dim"
-          TopLeft="316.12076286868,168.592439976253" />
-        <NodeLayout
           Size="198.666666666667,41.3333333333334"
           Id="Package\Purchasing_orders dimension\OLE DB Source PO_query"
           TopLeft="147.1922048732,26.0966466444907" />
+        <NodeLayout
+          Size="115.333333333334,41.3333333333334"
+          Id="Package\Purchasing_orders dimension\PO_dim"
+          TopLeft="316.12076286868,168.592439976253" />
         <EdgeLayout
           Id="Package\Purchasing_orders dimension.Paths[OLE DB Source Output]"
           TopLeft="246.525538206533,67.429979977824">
@@ -9485,79 +9230,6 @@ JOIN
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Purchasing_orders dimension\PO_dim">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Selling_Orders dimension">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="156,42.6666666666667"
-          Id="Package\Selling_Orders dimension\Sell_Orders Dim"
-          TopLeft="320.769230769231,117.692307692308" />
-        <NodeLayout
-          Size="157.333333333334,42.6666666666667"
-          Id="Package\Selling_Orders dimension\Sell_Orders data"
-          TopLeft="116.384615384615,33.9230769230769" />
-        <EdgeLayout
-          Id="Package\Selling_Orders dimension.Paths[OLE DB Source Output]"
-          TopLeft="195.051282051282,76.5897435897436">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="203.717948717949,41.1025641025641"
-              Start="0,0"
-              End="203.717948717949,33.6025641025641">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5512820512821" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5512820512821"
-                    Point2="0,20.5512820512821"
-                    Point3="4,20.5512820512821" />
-                  <mssgle:LineSegment
-                    End="199.717948717949,20.5512820512821" />
-                  <mssgle:CubicBezierSegment
-                    Point1="199.717948717949,20.5512820512821"
-                    Point2="203.717948717949,20.5512820512821"
-                    Point3="203.717948717949,24.5512820512821" />
-                  <mssgle:LineSegment
-                    End="203.717948717949,33.6025641025641" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Selling_Orders dimension\Sell_Orders data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Selling_Orders dimension\Sell_Orders Dim">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9747,46 +9419,20 @@ JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\StockItemtransactions +Purchasing data">
+    design-time-name="Package\Inventory Movement Fact Table\Fact Table Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\StockItemTransactions + Sales data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\POrderDate Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimDate]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\PExpectedDate Lookup">
+    design-time-name="Package\Inventory Movement Fact Table\StockItemTransactionKey Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -9796,122 +9442,7 @@ JOIN
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[DimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\StockReceiptDate Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\PurchaseOrdersDimID Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimPurchasingOrderLine]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\SupplierId Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimSupplier]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\StockItem Transaction Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimStockItem]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Inventory Movement Fact Table\LastReceiptDate Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimDate]</Value>
+          type="q3:string">[dbo].[WarehouseTransactionDim]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
