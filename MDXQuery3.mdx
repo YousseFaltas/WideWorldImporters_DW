@@ -1,0 +1,69 @@
+SELECT 
+    {[Measures].[Quantity Ordered]} ON COLUMNS,
+    [P Order Date].[Calendar Month Number].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Quantity Ordered]} ON COLUMNS,
+    [P Order Date].[Calendar year].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Quantity Ordered]} ON COLUMNS,
+    [Dim Stock Item].[Stock Item Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Quantity Ordered]} ON COLUMNS,
+    [Dim Supplier].[Supplier Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Lead Time Days]} ON COLUMNS,
+    [Dim Stock Item].[Stock Item Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Quantity Ordered], [Measures].[Quantity Received]} ON COLUMNS,
+    [Dim Stock Item].[Stock Item Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Quantity Ordered], [Measures].[Quantity Received]} ON COLUMNS,
+    [Warehouse Transaction Dim].[Transaction Type Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+SELECT 
+    {[Measures].[Quantity Ordered], [Measures].[Quantity Stored]} ON COLUMNS,
+    [Dim Stock Item].[Stock Item Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Lead Time Days]} ON COLUMNS,
+    [Dim Supplier].[Supplier Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+SELECT 
+    {[Measures].[Lead Time Days], [Measures].[Quantity Ordered]} ON COLUMNS,
+    [Dim Stock Item].[Stock Item Name].MEMBERS ON ROWS
+FROM 
+    [WWI DW2]
+
+
+
+
+
+
+
+
+
+
+
