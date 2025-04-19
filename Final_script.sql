@@ -228,8 +228,9 @@ CREATE TABLE [dbo].[FactInventoryMovement](
 	[WarehouseTransactionDimID] [int] NOT NULL,
 
 --fact Table Measures
-	[QuantityOrdered] [int] NULL,--Amount of stock Ordered From supplier
-	[QuantityReceived] [int] NULL,--Amount of Stock Successfully received from suppliers
+	[QuantityOutersOrdered] [int] NULL,--Amount of stock Ordered From supplier
+	[QuantityOutersReceived] [int] NULL,--Amount of Stock Successfully received from suppliers
+	[QuantityItemsReceived] [int] NULL,
 	[QuantityStored] [int] NULL,--Amount of Stock stored in the warehouse
 	[LeadTimeDays] [int] NULL,--Days between order placement and receipt
 
