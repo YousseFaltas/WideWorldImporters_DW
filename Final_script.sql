@@ -90,23 +90,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[DimCustomer](
-	[CustomerKey] [int] IDENTITY(1,1) NOT NULL,
-	[WWICustomerID] [int] NOT NULL,
-	[CustomerName] [nvarchar](100) NOT NULL,
-	[CustomerCategoryName] [nvarchar](50) NULL,
-	[BuyingGroupName] [nvarchar](50) NULL,
-	[DeliveryMethodName] [nvarchar](50) NULL,
-	[CityName] [nvarchar](50) NULL,
-	[PhoneNumber] [nvarchar](20) NULL,
-	[DeliveryAddressLine1] [nvarchar](60) NULL,
-	[DeliveryAddressLine2] [nvarchar](60) NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[CustomerKey] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
 /****** Object:  Table [dbo].[DimDate]    Script Date: 4/15/2025 12:40:23 AM ******/
 SET ANSI_NULLS ON
 GO
